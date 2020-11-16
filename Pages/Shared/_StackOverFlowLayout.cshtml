@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>STACKOVERFLOW</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="~/css/bootstrap.min.css" rel="stylesheet">
+  <link href="~/css/icofont.min.css" rel="stylesheet">
+  <link href="~/css/boxicons.min.css" rel="stylesheet">
+  <link href="~/css/owl.carousel.min.css" rel="stylesheet">
+  <link href="~/css/venobox.css" rel="stylesheet">
+  <link href="~/css/aos.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="~/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-xl-9 d-flex align-items-center">
+          <h1 class="logo mr-auto"><a href="index.html">STACKOVERFLOW</a></h1>
+          <nav class="nav-menu d-none d-lg-block">
+            <ul>
+              <li class="active"><a href="/Index">HOME</a></li>
+              <li><a href="/Questions/Add">ADDQUESTION</a></li>
+              <li><a href="/Questions/List">QUESTIONLIST</a></li>
+              <li><a href="/Questions/EditDelete">EDIT/DELETE</a></li>
+              <li><a href="/Questions/Index">SEARCH</a></li>
+              <li><a href="#contact">CONTACT</a></li>
+            </ul>
+          </nav><!-- .nav-menu -->
+          <a href="#about" class="get-started-btn scrollto">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container-fluid" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>Share your knowledge </h1>
+
+          <div><a href="#about" class="btn-get-started scrollto">Ask</a></div>
+        </div>
+        <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
+          <img src="~/qa1.jpg" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <section id="about" class="about">
+      <div class="container">
+        <div class="container">
+          <main role="main" class="pb-3">
+            @RenderBody()
+          </main>
+        </div>
+      </div>
+    </section>
+    <section id="counts" class="counts">
+      <div class="container">
+        <div class="container">
+          <main role="main" class="pb-3">
+            @RenderBody()
+          </main>
+        </div>
+      </div>
+    </section>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <p>Cochin,Kerala,India</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>demo@brainchild.services</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+  </main>
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>BrainChildAcademy</h4>
+            <p>
+              Cochin<br>
+              India <br><br>
+            </p>
+          </div>
+          <div class="col-lg-1 col-md-6 footer-links">
+          </div>
+          <div class="col-lg-3 col-md-6 footer-links">
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/Index">HOME</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/Questions/Add">ADDQUESTION</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/Questions/List">QUESTIONLIST</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/Questions/EditDelete">EDIT/DELETE</a></li>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright-wrap d-md-flex py-4">
+        <div class="mr-md-auto text-center text-md-left">
+          <div class="copyright">
+            Copyright-&copy; 2020 <strong><span>BrainChildServices</span></strong>. All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <div id="preloader"></div>
+  <script src="~/js/jquery.min.js"></script>
+  <script src="~/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/jquery.easing.min.js"></script>
+  <script src="~/js/validate.js"></script>
+  <script src="~/js/jquery.waypoints.min.js"></script>
+  <script src="~/js/counterup.min.js"></script>
+  <script src="~/js/owl.carousel.min.js"></script>
+  <script src="~/js/isotope.pkgd.min.js"></script>
+  <script src="~/js/venobox.min.js"></script>
+  <script src="~/js/aos.js"></script>
+  <script src="~/js/main.js"></script>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  @RenderSection("Scripts", required: false)
+</body>
+
+</html>
