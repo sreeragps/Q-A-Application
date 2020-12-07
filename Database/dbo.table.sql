@@ -1,0 +1,6 @@
+CREATE TABLE [dbo].[Stack]
+(
+	[StackId] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[StackQuestion] VARCHAR(MAX) NOT NULL,
+	[StackAnswer] VARCHAR(MAX) NOT NULL
+)
