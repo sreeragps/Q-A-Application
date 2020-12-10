@@ -11,50 +11,41 @@ using StackOverFlowProject.Models;
 
 namespace StackOverFlowProject.Pages
 {
-    public interface IQuestionsRepository  
-    {         
-      void Add(Stack stack);  
-      List<Stack> List();  
-    } 
-
-    public class QuestionsRepository :IQuestionsRepository 
+    public interface IQuestionsRepository
     {
-      
+        void Add(Stack stack);
+        List<Stack> List();
+    }
+    public class QuestionsRepository : IQuestionsRepository
+    {
+
         public void Add(Stack stackobj)
         {
-            string question=stackobj.StackQuestion;
-            string details=stackobj.StackAnswer;
             SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
-            string sqlins = @"insert into stack(StackQuestion,StackAnswer)values(@question, @details)";
+            string sqlins = @"insert into stack(StackQuestion,StackAnswer)values(@StackQuestion, @StackAnswer)";
             SqlCommand cmdnon = new SqlCommand(sqlins, connection);
-
-            cmdnon.Parameters.Add("@question", SqlDbType.NVarChar, 100);
-            cmdnon.Parameters.Add("@details", SqlDbType.NVarChar, 500);
+            cmdnon.Parameters.Add("@StackQuestion", SqlDbType.NVarChar, 100);
+            cmdnon.Parameters.Add("@StackAnswer", SqlDbType.NVarChar, 1000);
             connection.Open();
-            cmdnon.Parameters["@question"].Value =question;
-            cmdnon.Parameters["@details"].Value = details;
+            cmdnon.Parameters["@StackQuestion"].Value = stackobj.StackQuestion;
+            cmdnon.Parameters["@StackAnswer"].Value = stackobj.StackAnswer;
             cmdnon.ExecuteNonQuery();
             connection.Close();
-
         }
-          
-        public  List<Stack> QuestionList = new List<Stack>();
+        public List<Stack> QuestionList = new List<Stack>();
         public List<Stack> List()
-         {
-            
+        {
+
             SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
             connection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM stack", connection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-               QuestionList.Add(new Stack(reader.GetString(1), reader.GetString(2)));
+                QuestionList.Add(new Stack(reader.GetString(1), reader.GetString(2)));
             }
             connection.Close();
             return QuestionList;
-
-
-         }
+        }
     }
-   
 }
