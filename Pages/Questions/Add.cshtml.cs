@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Data;
-
+using StackOverFlowProject.Models;
 
 namespace StackOverFlowProject.Pages
 {
     public class AddModel : PageModel
     {
-        public void OnPost(Questions qns)
+        public void OnPost(Stack stack)
         {
             QuestionsRepository q=new QuestionsRepository();
-            q.Add(qns);
+            q.Add(stack);
             // SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
             // string sqlins = @"insert into stack(StackQuestion,StackAnswer)values(@question, @details)";
             // SqlCommand cmdnon = new SqlCommand(sqlins, connection);

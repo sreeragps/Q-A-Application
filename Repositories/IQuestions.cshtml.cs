@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Data;
-
+using StackOverFlowProject.Models;
 
 namespace StackOverFlowProject.Pages
 {
     public interface IQuestionsRepository  
     {         
-      void Add(Questions qns);  
-      //void List();  
+      void Add(Stack stack);  
+      List<Stack> List();  
     } 
 
     public class QuestionsRepository :IQuestionsRepository 
     {
-        public void Add(Questions qns)
+      
+        public void Add(Stack stackobj)
         {
-            string question=qns.question;
-            string details=qns.details;
+            string question=stackobj.StackQuestion;
+            string details=stackobj.StackAnswer;
             SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
             string sqlins = @"insert into stack(StackQuestion,StackAnswer)values(@question, @details)";
             SqlCommand cmdnon = new SqlCommand(sqlins, connection);
@@ -36,25 +37,24 @@ namespace StackOverFlowProject.Pages
             connection.Close();
 
         }
-    }
-    public class Questions
-    {  
-        public Questions(){}
-        public Questions(string question1,string details1) {
+          
+        public  List<Stack> QuestionList = new List<Stack>();
+        public List<Stack> List()
+         {
+            
+            SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
+            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM stack", connection);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+               QuestionList.Add(new Stack(reader.GetString(1), reader.GetString(2)));
+            }
+            connection.Close();
+            return QuestionList;
 
-         this.question=question1;
-         this.details=details1;
+
          }
-         
-        public string question
-           {
-            get;set;
-            }
-        
-        public string details
-           {
-            get;set;
-            }
-        
     }
+   
 }
