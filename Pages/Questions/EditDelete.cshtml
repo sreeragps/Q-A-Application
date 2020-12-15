@@ -1,7 +1,27 @@
-@page
+@page "~/Questions/EditDelete"
 @{
-    Layout="_StackOverFlowLayout";
+    Layout = "_StackOverFlowLayout";
 }
-@model EditDeleteModel 
+@model EditDeleteModel
 
-<h1><BOLD>EDIT/DELETE QUESTION....EDIT/DELETE QUESTION.</BOLD></h1>
+<h1>
+    <BOLD>                 EDIT/DELETE QUESTION & ANSWER             </BOLD>
+</h1>
+
+<body>
+
+    @for (int i = 0; i < Model.questionListNew.Count; i++)
+    {
+        <label>
+            <strong>QUESTION</strong> :@Model.questionListNew[i].StackQuestion
+        </label><br>
+
+        <label><strong>ANSWER:</strong></label><br>
+        <p style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">@Model.questionListNew[i].StackAnswer.
+        </p>
+        <a href="~/Questions/EditConfirm/@Model.questionListNew[i].StackId">Edit</a>
+        <a href="/Questions/DeleteConfirm/@Model.questionListNew[i].StackId">Delete</a>
+        <br>
+    }
+
+</body>
