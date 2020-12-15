@@ -5,20 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using StackOverFlowProject.Models;
 
 namespace StackOverFlowProject.Pages
 {
     public class EditDeleteModel:PageModel
     {
-        private readonly ILogger<EditDeleteModel> _logger;
-
-        public EditDeleteModel(ILogger<EditDeleteModel> logger)
-        {
-            _logger = logger;
-        }
-
+        public List<Stack> questionListNew = new List<Stack>();
         public void OnGet()
         {
+            QuestionsRepository questionrepositorynew = new QuestionsRepository();
+            questionListNew = questionrepositorynew.List();
         }
     }
 }

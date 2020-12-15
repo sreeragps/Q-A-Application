@@ -1,0 +1,25 @@
+@page "/Questions/DeleteConfirm/{StackId}"
+@{
+    Layout = "_StackOverFlowLayout";
+}
+@model DeleteConfirmModel
+
+<h1>
+    <BOLD>DO YOU WANT TO DELETE THIS QUESTION AND ANSWER</BOLD>
+</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-5">
+            <form method="post">
+                <label><strong>Question:</strong><input size="70" type="text" name="StackQuestion"
+                        value="@Model.stackList[0].StackQuestion" style="background-color:lavender"></label><br>
+                <p><strong>Answer:</strong><textarea name="StackAnswer" style="background-color:lavender" rows="10"
+                        cols="70">@Model.stackList[0].StackAnswer</textarea></p><br>
+                <button type="submit" class="btn btn-warning">YES</button>
+                <a class="btn btn-warning" href="~/Questions/EditDelete" role="button">NO</a>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

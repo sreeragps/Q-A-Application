@@ -1,22 +1,24 @@
 
-namespace StackOverFlowProject.Models{
- public class Stack
-    {  
-        public Stack(){}
-        public Stack(string stackquestion,string stackanswer)
+namespace StackOverFlowProject.Models
+{
+    public class Stack
+    {
+        public Stack() { }
+        public Stack(int stackid, string stackquestion, string stackanswer)
         {
-         this.StackQuestion=stackquestion;
-         this.StackAnswer=stackanswer;
+            this.StackId = stackid;
+            this.StackQuestion = stackquestion;
+            this.StackAnswer = stackanswer;
         }
-         
+        public int StackId { get; set; }
         public string StackQuestion
         {
-            get;set;
+            get; set;
         }
-        
+
         public string StackAnswer
         {
-            get;set;
+            get; set;
         }
     }
 }

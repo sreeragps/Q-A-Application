@@ -1,0 +1,25 @@
+@page "/Questions/EditConfirm/{StackId}"
+@{
+    Layout = "_StackOverFlowLayout";
+}
+@model EditConfirmModel
+
+<h1>
+    <BOLD>EDIT THIS QUESTION AND ANSWER HERE</BOLD>
+</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-5">
+            <form method="post">
+                <label><strong>EDIT Question:</strong><input size="70" type="text" name="StackQuestion"
+                        value="@Model.StackList[0].StackQuestion" style="background-color:lavender" ></label>
+                <br>
+                <p><strong>EDIT Answer:</strong><textarea name="StackAnswer" 
+                        style="background-color:lavender" rows="10" cols="70">@Model.StackList[0].StackAnswer</textarea></p><br>
+                <input type="submit" value="submit" />
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
