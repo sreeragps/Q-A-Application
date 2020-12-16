@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Data;
 using StackOverFlowProject.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace StackOverFlowProject.Pages
 {
@@ -16,14 +17,13 @@ namespace StackOverFlowProject.Pages
         public List<Stack> StackList = new List<Stack>();
         public void OnGet(int stackId)
         {
-            QuestionsRepository questionrepository = new QuestionsRepository();
-            StackList=questionrepository.Read(stackId);
+            QuestionsRepository questionRepository = new QuestionsRepository();
+            StackList = questionRepository.Read(stackId);
         }
-
         public IActionResult OnPost(Stack stackObject)
         {
-            QuestionsRepository questionrepository = new QuestionsRepository();
-            questionrepository.Edit(stackObject);
+            QuestionsRepository questionRepository = new QuestionsRepository();
+            questionRepository.Edit(stackObject);
             return Redirect("~/Questions/EditDelete");
         }
     }

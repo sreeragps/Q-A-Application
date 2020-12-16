@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Data;
 using StackOverFlowProject.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace StackOverFlowProject.Pages
 {

@@ -8,7 +8,10 @@ using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Data;
 using StackOverFlowProject.Models;
-
+using Microsoft.Extensions.Configuration;
+using StackOverFlowProject.Pages;
+using Microsoft.Extensions.Options;
+using System.IO;
 
 namespace StackOverFlowProject.Pages
 {
@@ -23,9 +26,15 @@ namespace StackOverFlowProject.Pages
     }
     public class QuestionsRepository : IQuestionsRepository
     {
+        public IConfigurationRoot GetConnection()
+
+        {
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appSettings.json").Build();
+            return builder;
+        }
         public void Add(Stack stackobj)
         {
-            SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(GetConnection().GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             string sqlins = @"insert into stack(StackQuestion,StackAnswer)values(@StackQuestion, @StackAnswer)";
             SqlCommand cmdnon = new SqlCommand(sqlins, connection);
             cmdnon.Parameters.Add("@StackQuestion", SqlDbType.NVarChar, 100);
@@ -39,8 +48,7 @@ namespace StackOverFlowProject.Pages
         public List<Stack> StackList = new List<Stack>();
         public List<Stack> List()
         {
-
-            SqlConnection connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(GetConnection().GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             connection.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM stack", connection);
             SqlDataReader reader = command.ExecuteReader();
@@ -53,8 +61,7 @@ namespace StackOverFlowProject.Pages
         }
         public List<Stack> Read(int StackId)
         {
-            string sqlConnectString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True;";
-            SqlConnection connection = new SqlConnection(sqlConnectString);
+            SqlConnection connection = new SqlConnection(GetConnection().GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             connection.Open();
             string sqlSelect = "SELECT * FROM Stack WHERE StackId=@StackId";
             SqlCommand command = new SqlCommand(sqlSelect, connection);
@@ -70,8 +77,7 @@ namespace StackOverFlowProject.Pages
         }
         public void Edit(Stack stackObj)
         {
-            string sqlConnectString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True;";
-            SqlConnection connection = new SqlConnection(sqlConnectString);
+            SqlConnection connection = new SqlConnection(GetConnection().GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             string sqlUpd = @"UPDATE Stack SET StackQuestion=@StackQuestion,StackAnswer=@StackAnswer WHERE StackId=@StackId";
             SqlCommand command = new SqlCommand(sqlUpd, connection);
             command.Parameters.Add("@StackId", SqlDbType.Int);
@@ -87,8 +93,7 @@ namespace StackOverFlowProject.Pages
         }
         public void Remove(Stack stackObj)
         {
-            string sqlConnectString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StackOverflow;Integrated Security=True;";
-            SqlConnection connection = new SqlConnection(sqlConnectString);
+            SqlConnection connection = new SqlConnection(GetConnection().GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             string sqlDel = @"DELETE FROM Stack WHERE StackId=@StackId";
             SqlCommand command = new SqlCommand(sqlDel, connection);
             command.Parameters.Add("@StackId", SqlDbType.Int);
